@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ExcelReader" />
         <module name="Drinks" />
+        <module name="SportsResultsNotifier" />
       </profile>
     </annotationProcessing>
   </component>

@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/Drinks/pom.xml" />
         <option value="$PROJECT_DIR$/ExcelReader/pom.xml" />
+        <option value="$PROJECT_DIR$/SportsResultsNotifier/pom.xml" />
       </list>
     </option>
   </component>
