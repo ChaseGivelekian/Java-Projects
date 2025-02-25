@@ -13,6 +13,7 @@ public class ExcelReader {
 
         System.out.println("Inserting data into database");
         insertDataIntoDatabase(data);
+        System.out.println("Data inserted successfully");
     }
 
     private static StringBuilder readExcel() {
@@ -36,8 +37,9 @@ public class ExcelReader {
     }
 
     private static Connection getConnectionToDatabase() {
+        String dbPath = "ExcelReader/src/main/resources/database.db";
         try {
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/Excel Reader", "postgres", "password24$");
+            return DriverManager.getConnection("jdbc:sqlite:" + dbPath);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -52,7 +54,7 @@ public class ExcelReader {
             Statement st = connection.createStatement();
 
             st.execute("drop table if exists user_info");
-            st.execute("create table user_info (id serial primary key not null, name varchar(50), age int, email varchar(50))");
+            st.execute("create table user_info (id integer primary key, name text, age integer, email text)");
 
             String formattedData = data.toString()
                     .replaceAll("([a-zA-Z]+@[a-zA-Z.]+)", "'$1'")
