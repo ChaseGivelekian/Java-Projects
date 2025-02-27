@@ -7,10 +7,12 @@
         <option value="$PROJECT_DIR$/Drinks/pom.xml" />
         <option value="$PROJECT_DIR$/ExcelReader/pom.xml" />
         <option value="$PROJECT_DIR$/SportsResultsNotifier/pom.xml" />
+        <option value="$PROJECT_DIR$/HabbitLogger/pom.xml" />
+        <option value="$PROJECT_DIR$/HabitLogger/pom.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/out" />
+    <output url="file://$PROJECT_DIR$/HabitLogger/target" />
   </component>
 </project>

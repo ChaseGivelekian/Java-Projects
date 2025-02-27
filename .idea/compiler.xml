@@ -9,6 +9,7 @@
         <module name="ExcelReader" />
         <module name="Drinks" />
         <module name="SportsResultsNotifier" />
+        <module name="HabitLogger" />
       </profile>
     </annotationProcessing>
   </component>
