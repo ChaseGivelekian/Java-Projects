@@ -9,10 +9,20 @@
         <option value="$PROJECT_DIR$/SportsResultsNotifier/pom.xml" />
         <option value="$PROJECT_DIR$/HabbitLogger/pom.xml" />
         <option value="$PROJECT_DIR$/HabitLogger/pom.xml" />
+        <option value="$PROJECT_DIR$/test/pom.xml" />
+        <option value="$PROJECT_DIR$/Habit-Logger/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/Habit-Logger/HabitLogger/pom.xml" />
+        <option value="$PROJECT_DIR$/Habit-Logger/pom.xml" />
+        <option value="$PROJECT_DIR$/test/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/HabitLogger/target" />
+    <output url="file://$PROJECT_DIR$/target" />
   </component>
 </project>

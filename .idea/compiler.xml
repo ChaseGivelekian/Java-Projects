@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/Habit Logger/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
     <annotationProcessing>
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -12,5 +15,11 @@
         <module name="HabitLogger" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Habit Logger" target="21" />
+      <module name="Habit-Logger" target="21" />
+      <module name="HabitLogger (2)" target="21" />
+      <module name="test" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>

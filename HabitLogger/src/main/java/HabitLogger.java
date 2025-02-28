@@ -2,6 +2,8 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class HabitLogger {
+    private static final String dbPath = "HabitLogger/src/main/resources/Habits.db";
+
     public static void main(String[] args) {
         initializeDatabase();
         mainMenu();
@@ -57,8 +59,18 @@ public class HabitLogger {
 
     private static void viewAllRecords() {
         try (Connection connection = getConnectionToDatabase()) {
-            ResultSet results = connection.createStatement().executeQuery("select * from habit");
-            System.out.println(results);
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM habits");
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String description = rs.getString("description");
+                String date = rs.getString("date");
+                System.out.println("ID: " + id + ", Name: " + name + ", Description: " + description + ", Date: " + date);
+            }
+
+            mainMenu();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -82,7 +94,6 @@ public class HabitLogger {
     }
 
     private static Connection getConnectionToDatabase() {
-        String dbPath = "HabitLogger/src/main/resources/habit.db";
         try {
             return DriverManager.getConnection("jdbc:sqlite:" + dbPath);
         } catch (SQLException e) {
@@ -91,10 +102,9 @@ public class HabitLogger {
     }
 
     private static void initializeDatabase() {
-        String dbPath = "HabitLogger/src/main/resources/habit.db";
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath)) {
             Statement st = connection.createStatement();
-            st.execute("create table if not exists habit (id integer primary key autoincrement, name text not null, description text, date text)");
+            st.execute("create table if not exists habits (id integer primary key autoincrement, name text not null, description text, date text);");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
