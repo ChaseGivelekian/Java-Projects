@@ -77,17 +77,68 @@ public class HabitLogger {
     }
 
     private static void updateRecord() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What is the ID of the habit you would like to update?");
+        int id = scanner.nextInt();
+        System.out.println("What is the new name of the habit?");
+        String name = scanner.next();
+        System.out.println("What is the new description of the habit?");
+        String description = scanner.next();
+        System.out.println("What is the new date of the habit? (MM-DD-YYYY). Enter 1 to use today's date.");
+        String date = scanner.next();
+        if (date.equals("1")) {
+            date = java.time.LocalDate.now().format(java.time.format.DateTimeFormatter.ofPattern("MM-dd-yyyy"));
+        }
+
+        try (Connection connection = getConnectionToDatabase()) {
+            PreparedStatement ps = connection.prepareStatement("UPDATE habits SET name = ?, description = ?, date = ? WHERE id = ?");
+            ps.setString(1, name);
+            ps.setString(2, description);
+            ps.setString(3, date);
+            ps.setInt(4, id);
+            ps.executeUpdate();
+            System.out.println("Record updated successfully.");
+            mainMenu();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void deleteRecord() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What is the ID of the habit you would like to delete?");
+        int id = scanner.nextInt();
+        try (Connection connection = getConnectionToDatabase()) {
+            PreparedStatement ps = connection.prepareStatement("DELETE FROM habits WHERE id = ?");
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            System.out.println("Record deleted successfully.");
+            mainMenu();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void insertNewRecord() {
-    }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What is the name of the habit?");
+        String name = scanner.nextLine();
+        System.out.println("What is the description of the habit?");
+        String description = scanner.nextLine();
+        System.out.println("What is the date of the habit? (MM-DD-YYYY). Enter 1 to use today's date.");
+        String date = scanner.next();
+        if (date.equals("1")) {
+            date = java.time.LocalDate.now().format(java.time.format.DateTimeFormatter.ofPattern("MM-dd-yyyy"));
+        }
 
-    private static void insertIntoDatabase() {
         try (Connection connection = getConnectionToDatabase()) {
-            return;
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO habits (name, description, date) VALUES (?, ?, ?)");
+            ps.setString(1, name);
+            ps.setString(2, description);
+            ps.setString(3, date);
+            ps.executeUpdate();
+            System.out.println("Record inserted successfully.");
+            mainMenu();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
